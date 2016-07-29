@@ -5,8 +5,7 @@ Top nav for ionic based on ion-slide-box.
 + bower install `afeiship/ionic-slide-top-nav`
 
 ##snapshot:
-![snapshot1](https://github.com/afeiship/ionic-slide-top-nav/blob/master/_snapshot/slideTabs.gif)
-![snapshot2](https://github.com/afeiship/ionic-slide-top-nav/blob/master/_snapshot/top-tab.png)
+![snapshot](https://github.com/afeiship/ionic-slide-top-nav/blob/master/_snapshot/slideTabs.gif)
 
 
 ##demo:
