@@ -36,7 +36,7 @@
                 options.slideTabsScrollable = false;
               }
 
-              var tabItems = '<li ng-repeat="(key, value) in tabs" ng-click="onTabTabbed($event, {{key}})" class="slider-slide-tab" ng-bind-html="value"></li>';
+              var tabItems = '<li ng-repeat="(key, value) in tabs" ng-click="onTabTabbed($event, key)" class="slider-slide-tab" ng-bind-html="value"></li>';
 
               if (options.slideTabsScrollable) {
                 ionicScrollDelegateID = "ion-slide-tabs-handle-" + Math.floor((Math.random() * 10000) + 1);
