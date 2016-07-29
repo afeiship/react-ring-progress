@@ -120,13 +120,12 @@
 
               var targetTab = angular.element(slideTabs[targetSlideIndex]);
               var targetLeftOffset = targetTab.prop("offsetLeft");
-              var targetWidth = targetTab[0].offsetWidth;
 
 
               indicator.css({
                 "-webkit-transition-duration": "300ms",
                 "-webkit-transform": "translate(" + targetLeftOffset + "px,0px)",
-                "width": targetWidth + "px"
+                "width": 100 / slideTabs.length + "%"
               });
 
               if (options.slideTabsScrollable && ionicScrollDelegate) {

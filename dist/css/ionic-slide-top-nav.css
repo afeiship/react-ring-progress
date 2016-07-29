@@ -24,9 +24,13 @@ ion-slide:nth-child(2n) {
 .slidingTabs ul {
   background-color: #eee;
   height: 48px;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .slidingTabs ul li {
+  -ms-flex: 1;
+      flex: 1;
   height: 48px;
   line-height: 48px;
   text-align: center;

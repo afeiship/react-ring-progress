@@ -26,8 +26,10 @@ ion-slide {
   ul {
     background-color: $bar-positive-bg;
     height: $slidingTabsHeight;
+    display: flex;
 
     li {
+      flex:1;
       height: $slidingTabsHeight;
       line-height: $slidingTabsHeight;
       text-align: center;
