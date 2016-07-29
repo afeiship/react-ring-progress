@@ -16,27 +16,34 @@
   <script type="text/javascript" src="../dist/js/ionic-slide-top-nav.js"></script>
 
   <script>
-    var app = angular.module('starter', ['ionic','nx.widget']);
+    var app = angular.module('starter', ['ionic', 'nx.widget']);
 
-    app.config(function($stateProvider, $urlRouterProvider) {
+    app.config(function ($stateProvider, $urlRouterProvider) {
       $stateProvider.state('index', {
-        url : '/',
-        templateUrl : 'index.html',
-        controller : 'MainController'
+        url: '/',
+        templateUrl: 'index.html',
+        controller: 'MainController'
       });
 
       $urlRouterProvider.otherwise("/");
     });
 
-    app.controller("MainController", ['$scope',function($scope){
+    app.controller("MainController", ['$scope', '$ionicSlideBoxDelegate', function ($scope, $ionicSlideBoxDelegate) {
       $scope.test = "abc";
+      $scope.slideChange = slideChange;
+
+
+      function slideChange() {
+        console.log('change!!!');
+        console.log('$ionicSlideBoxDelegate.currentIndex();',$ionicSlideBoxDelegate.currentIndex());
+      }
     }]);
   </script>
 </head>
 <style>
-  .slidingTabs ul li{
+  .slidingTabs ul li {
     background: #7d1b1c;
-    font-size:16px;
+    font-size: 16px;
   }
 </style>
 <body ng-app="starter">
@@ -52,7 +59,12 @@
 <script id="index.html" type="text/ng-template">
   <ion-view view-title="Sliding Tabs 1" hide-nav-bar=true>
     <ion-content scroll="false">
-      <ion-slide-box slide-tabs-scrollable="false"  show-pager="false" nx-ionic-slide-top-nav style="font-size:14px;">
+      <ion-slide-box
+        slide-tabs-scrollable="false"
+        show-pager="false" auto-play="false"
+        does-continue="false"
+        nx-ionic-slide-top-nav
+        on-slide-changed="slideChange()">
         <ion-slide nx-ionic-slide-tab-label="全部"><h1>Tab 1</h1></ion-slide>
         <ion-slide nx-ionic-slide-tab-label="收入"><h1>Tab 2</h1></ion-slide>
         <ion-slide nx-ionic-slide-tab-label="支出"><h1>Tab 3</h1></ion-slide>
