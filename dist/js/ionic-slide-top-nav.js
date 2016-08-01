@@ -8,6 +8,7 @@
 (function () {
   'use strict';
 
+
   var slidingTabsDirective = angular.module('nx.widget')
     .directive('nxIonicSlideTopNav', [
       '$timeout',
@@ -33,10 +34,10 @@
             var tabsBar;
 
             var options = {
-              'slideTabsScrollable': true
+              'slideTabsScrollable': true,
+              'indicatorRatio': attrs.indicatorRatio*1 || 0
             };
-
-
+            
             var init = function () {
 
               if (angular.isDefined(attrs.slideTabsScrollable) && attrs.slideTabsScrollable === "false") {
@@ -132,8 +133,8 @@
 
               indicator.css({
                 "-webkit-transition-duration": "300ms",
-                "-webkit-transform": "translate(" + targetLeftOffset + "px,0px)",
-                "width": 100 / slideTabs.length + "%"
+                "-webkit-transform": "translate(" + (targetLeftOffset + targetWidth * (options.indicatorRatio/2) ) + "px,0px)",
+                "width": targetWidth *(options.indicatorRatio || 1) + "px"
               });
 
               if (options.slideTabsScrollable && ionicScrollDelegate) {
@@ -183,11 +184,10 @@
 
               }
 
-
               indicator.css({
                 "-webkit-transition-duration": "0ms",
                 "-webkit-transform": "translate(" + indicatorPos + "px,0px)",
-                "width": indicatorWidth + "px"
+                "width": indicatorWidth * (options.indicatorRatio || 1) + "px"
               });
 
 
