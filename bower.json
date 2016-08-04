@@ -30,6 +30,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "angular-module-stiffener": "afeiship/angular-module-stiffener",
-    "ionic": "^1.3.1"
+    "ionic": "^1.3.1",
+    "angular-prevent-body-move": "afeiship/angular-prevent-body-move"
   }
 }
