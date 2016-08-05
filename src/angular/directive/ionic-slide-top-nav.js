@@ -123,6 +123,8 @@
               var targetLeftOffset = targetTab.prop("offsetLeft");
               var targetWidth = targetTab[0].offsetWidth;
 
+              //TODO: targetSlideIndex some times will be undefind.
+
 
               indicator.css({
                 "-webkit-transition-duration": "300ms",
