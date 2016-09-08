@@ -35,7 +35,7 @@
 
             var options = {
               'slideTabsScrollable': true,
-              'followMove': attrs.followMove=='true',
+              'followMove': attrs.followMove == 'true',
               'indicatorRatio': attrs.indicatorRatio * 1 || 0
             };
 
