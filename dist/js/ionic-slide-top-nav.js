@@ -35,6 +35,7 @@
 
             var options = {
               'slideTabsScrollable': true,
+              'followMove': attrs.followMove=='true',
               'indicatorRatio': attrs.indicatorRatio * 1 || 0
             };
 
@@ -131,10 +132,9 @@
 
               //TODO: targetSlideIndex some times will be undefind.
 
-
               indicator.css({
                 "-webkit-transition-duration": "300ms",
-                "-webkit-transform": "translate(" + (targetLeftOffset + targetWidth * (options.indicatorRatio / 2)) + "px,0px)",
+                "-webkit-transform": "translate(" + (targetLeftOffset + 0.5 * (targetWidth - targetWidth * options.indicatorRatio)) + "px,0px)",
                 "width": targetWidth * (options.indicatorRatio || 1) + "px"
               });
 
@@ -242,7 +242,7 @@
               var slideDirection = position > 0 ? "right" : "left";
               position = Math.abs(position);
 
-              setIndicatorPosition(currentSlideIndex, targetSlideIndex, position, slideDirection);
+              options.followMove && setIndicatorPosition(currentSlideIndex, targetSlideIndex, position, slideDirection);
               angular.element(document.body).addClass('pointer-none');
             };
 
