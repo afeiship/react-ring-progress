@@ -1,6 +1,11 @@
 /**ionic-slide-top-nav Start**/
 $slidingTabsHeight: 48px;
 $bar-positive-bg:#eee;
+
+.pointer-none{
+  pointer-events: none;
+}
+
 ion-slide {
   background-color: #f0f0f0;
 

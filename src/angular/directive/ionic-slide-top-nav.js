@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
 
@@ -10,11 +10,11 @@
       '$ionicSlideBoxDelegate',
       '$ionicScrollDelegate',
       '$ionicGesture',
-      function ($timeout, $compile, $interval, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicGesture) {
+      function($timeout, $compile, $interval, $ionicSlideBoxDelegate, $ionicScrollDelegate, $ionicGesture) {
         return {
           require: "^ionSlideBox",
           restrict: 'A',
-          link: function (scope, element, attrs, parent) {
+          link: function(scope, element, attrs, parent) {
 
             var ionicSlideBoxDelegate;
             var ionicScrollDelegate;
@@ -28,10 +28,10 @@
 
             var options = {
               'slideTabsScrollable': true,
-              'indicatorRatio': attrs.indicatorRatio*1 || 0
+              'indicatorRatio': attrs.indicatorRatio * 1 || 0
             };
 
-            var init = function () {
+            var init = function() {
 
               if (angular.isDefined(attrs.slideTabsScrollable) && attrs.slideTabsScrollable === "false") {
                 options.slideTabsScrollable = false;
@@ -81,28 +81,27 @@
               slideToCurrentPosition();
             };
 
-            var addEvents = function () {
+            var addEvents = function() {
               ionic.onGesture("dragleft", scope.onSlideMove, slider[0]);
               ionic.onGesture("dragright", scope.onSlideMove, slider[0]);
               ionic.onGesture("release", scope.onSlideChange, slider[0]);
             };
 
-            var setTabBarWidth = function () {
+            var setTabBarWidth = function() {
               if (!angular.isDefined(slideTabs) || slideTabs.length == 0) {
                 return false;
               }
               var tabsList = tabsBar.find("ul");
               var tabsWidth = 0;
 
-              angular.forEach(slideTabs, function (currentElement) {
+              angular.forEach(slideTabs, function(currentElement) {
                 var currentLi = angular.element(currentElement);
                 tabsWidth += currentLi[0].offsetWidth;
               });
 
               if (options.slideTabsScrollable) {
                 angular.element(tabsBar[0].querySelector(".scroll")).css("width", tabsWidth + 1 + "px");
-              }
-              else {
+              } else {
 
                 slideTabs.css("width", tabsList[0].offsetWidth / slideTabs.length + "px");
               }
@@ -111,7 +110,7 @@
 
             };
 
-            var slideToCurrentPosition = function () {
+            var slideToCurrentPosition = function() {
 
               if (!angular.isDefined(slideTabs) || slideTabs.length == 0) {
                 return false;
@@ -128,8 +127,8 @@
 
               indicator.css({
                 "-webkit-transition-duration": "300ms",
-                "-webkit-transform": "translate(" + (targetLeftOffset + targetWidth * (options.indicatorRatio/2) ) + "px,0px)",
-                "width": targetWidth *(options.indicatorRatio || 1) + "px"
+                "-webkit-transform": "translate(" + (targetLeftOffset + targetWidth * (options.indicatorRatio / 2)) + "px,0px)",
+                "width": targetWidth * (options.indicatorRatio || 1) + "px"
               });
 
               if (options.slideTabsScrollable && ionicScrollDelegate) {
@@ -143,7 +142,7 @@
             };
 
 
-            var setIndicatorPosition = function (currentSlideIndex, targetSlideIndex, position, slideDirection) {
+            var setIndicatorPosition = function(currentSlideIndex, targetSlideIndex, position, slideDirection) {
 
               var targetTab = angular.element(slideTabs[targetSlideIndex]);
 
@@ -171,8 +170,7 @@
                 indicatorPos = targetLeftOffset - (offsetLeftDiff * (position - 1));
                 indicatorWidth = targetWidth - ((widthDiff * (1 - position)));
 
-              }
-              else if (targetSlideIndex > currentSlideIndex) {
+              } else if (targetSlideIndex > currentSlideIndex) {
 
                 indicatorPos = targetLeftOffset + (offsetLeftDiff * (position - 1));
                 indicatorWidth = targetWidth + ((widthDiff * (position - 1)));
@@ -193,19 +191,19 @@
 
             };
 
-            scope.onTabTabbed = function (event, index) {
+            scope.onTabTabbed = function(event, index) {
               ionicSlideBoxDelegate.slide(index);
               slideToCurrentPosition();
             };
 
             scope.tabs = [];
 
-            scope.addTabContent = function ($content) {
+            scope.addTabContent = function($content) {
 
               scope.tabs.push($content);
               scope.$apply();
 
-              $timeout(function () {
+              $timeout(function() {
                 slideTabs = angular.element(tabsBar[0].querySelector("ul").querySelectorAll(".slider-slide-tab"));
                 slideToCurrentPosition();
                 setTabBarWidth()
@@ -213,13 +211,14 @@
 
             };
 
-            scope.onSlideChange = function (slideIndex) {
+            scope.onSlideChange = function(slideIndex) {
               slideToCurrentPosition();
+              angular.element(document.body).removeClass('pointer-none');
             };
 
-            scope.onSlideMove = function () {
-              var scrollDiv = slider[0].getElementsByClassName("slider-slide");
+            scope.onSlideMove = function() {
 
+              var scrollDiv = slider[0].getElementsByClassName("slider-slide");
               var currentSlideIndex = ionicSlideBoxDelegate.currentIndex();
               var currentSlide = angular.element(scrollDiv[currentSlideIndex]);
               var currentSlideLeftOffset = currentSlide.css('-webkit-transform').replace(/[^0-9\-.,]/g, '').split(',')[0];
@@ -237,13 +236,14 @@
               position = Math.abs(position);
 
               setIndicatorPosition(currentSlideIndex, targetSlideIndex, position, slideDirection);
+              angular.element(document.body).addClass('pointer-none');
             };
 
             init();
           },
-          controller: ['$scope', function ($scope) {
-            this.addTab = function ($content) {
-              $timeout(function () {
+          controller: ['$scope', function($scope) {
+            this.addTab = function($content) {
+              $timeout(function() {
                 if ($scope.addTabContent) {
                   $scope.addTabContent($content);
                 }
@@ -251,12 +251,13 @@
             }
           }]
         };
-      }]);
+      }
+    ]);
 
-  slidingTabsDirective.directive('nxIonicSlideTabLabel', [function () {
+  slidingTabsDirective.directive('nxIonicSlideTabLabel', [function() {
     return {
       require: "^nxIonicSlideTopNav",
-      link: function ($scope, $element, $attrs, $parent) {
+      link: function($scope, $element, $attrs, $parent) {
         $parent.addTab($attrs.nxIonicSlideTabLabel);
       }
     }
