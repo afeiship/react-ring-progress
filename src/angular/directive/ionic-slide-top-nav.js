@@ -25,9 +25,9 @@
 
             var slider;
             var tabsBar;
-
+            console.log(attrs);
             var options = {
-              'cssClass':attrs.cssClass || '',
+              'cssClass': attrs.cssClass || '',
               'slideTabsScrollable': true,
               'followMove': attrs.followMove == 'true',
               'indicatorRatio': attrs.indicatorRatio * 1 || 0
@@ -45,7 +45,7 @@
                 ionicScrollDelegateID = "ion-slide-tabs-handle-" + Math.floor((Math.random() * 10000) + 1);
                 tabsBar = angular.element('<ion-scroll delegate-handle="' + ionicScrollDelegateID + '" class="slidingTabs" direction="x" scrollbar-x="false"><ul>' + tabItems + '</ul> <div class="tab-indicator-wrapper"><div class="tab-indicator"></div></div> </ion-scroll>');
               } else {
-                tabsBar = angular.element('<div class="slidingTabs {{cssClass}}" nx-prevent-body-move><ul>' + tabItems + '</ul> <div class="tab-indicator-wrapper"><div class="tab-indicator"></div></div> </div>');
+                tabsBar = angular.element('<div class="slidingTabs ' + options.cssClass + '" nx-prevent-body-move><ul>' + tabItems + '</ul> <div class="tab-indicator-wrapper"><div class="tab-indicator"></div></div> </div>');
               }
 
 
