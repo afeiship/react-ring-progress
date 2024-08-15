@@ -35,11 +35,11 @@ export type ReactRingProgressProps = {
   /**
    * The background svg circle props.
    */
-  bgSvgCircleProps?: ReactSvgCircleProps;
+  bgProps?: ReactSvgCircleProps;
   /**
    * The foreground svg circle props.
    */
-  fgSvgCircleProps?: ReactSvgCircleProps;
+  fgProps?: ReactSvgCircleProps;
 } & ReactSvgCircleProps;
 
 export default class ReactRingProgress extends Component<ReactRingProgressProps> {
@@ -55,17 +55,17 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
       stroke,
       lineCap,
       lineWidth,
-      bgSvgCircleProps,
-      fgSvgCircleProps,
+      bgProps,
+      fgProps,
       ...rest
     } = this.props;
 
     return (
       <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
         <ReactSvgCircle className={`${CLASS_NAME}__bg`} value={100} lineWidth={lineWidth}
-                        stroke="#ccc" {...bgSvgCircleProps} />
+                        stroke="#ccc" {...bgProps} />
         <ReactSvgCircle className={`${CLASS_NAME}__fg`} value={value} stroke={stroke} lineCap={lineCap}
-                        lineWidth={lineWidth} {...fgSvgCircleProps} />
+                        lineWidth={lineWidth} {...fgProps} />
         {children}
       </div>
     );
