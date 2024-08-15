@@ -1,0 +1,15 @@
+name: react-component-library
+files:
+  - 'packages/**/*.*'
+  - 'scripts/*'
+  - '.*'
+  - '*'
+  - '!node_modules'
+  - '!rif.config.yaml'
+replacements:
+  - from: /react-component-library-description/g
+    to: RingProgress component for react.
+  - from: /react-component-library/g
+    to: ${PROJECT_NAME}
+  - from: /Anonymous/g
+    to: ReactRingProgress

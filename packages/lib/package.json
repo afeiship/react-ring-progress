@@ -1,0 +1,42 @@
+{
+  "name": "@jswork/react-ring-progress",
+  "version": "1.0.0",
+  "main": "dist/main.cjs.js",
+  "module": "dist/main.esm.js",
+  "types": "dist/main.d.ts",
+  "description": "RingProgress component for react.",
+  "homepage": "https://js.work",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "postbuild": "postsass -s src/style.scss -d dist/style.css -c",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@jswork/harmony-events": "^1.1.2",
+    "@jswork/react-svg-circle": "^1.0.3",
+    "@swc/core": "^1.3.93",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "autoprefixer": "^10.4.16",
+    "classnames": "^2.5.1",
+    "cssnano": "^6.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tsup": "^8.2.4",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "classnames": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  }
+}
