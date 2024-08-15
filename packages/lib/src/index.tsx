@@ -59,6 +59,7 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
       fgSvgCircleProps,
       ...rest
     } = this.props;
+
     return (
       <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
         <ReactSvgCircle className={`${CLASS_NAME}__bg`} value={100} lineWidth={lineWidth}

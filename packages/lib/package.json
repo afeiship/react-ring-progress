@@ -1,6 +1,6 @@
 {
   "name": "@jswork/react-ring-progress",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
@@ -38,5 +38,12 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "keywords": [
+    "circle",
+    "process",
+    "react",
+    "ring",
+    "svg"
+  ]
 }
