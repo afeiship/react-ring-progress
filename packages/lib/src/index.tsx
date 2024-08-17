@@ -3,6 +3,7 @@ import React, { ReactNode, Component } from 'react';
 import { ReactSvg, ReactCircle, ReactCircleProps } from '@jswork/react-svg-circle';
 
 const CLASS_NAME = 'react-ring-progress';
+
 export type ReactRingProgressProps = {
   /**
    * The background svg circle props.
@@ -16,10 +17,6 @@ export type ReactRingProgressProps = {
    * The rest props of background circle.
    */
   bgCircleProps?: ReactCircleProps;
-  /**
-   * The rest props of foreground circle.
-   */
-  fgCircleProps?: ReactCircleProps;
   /**
    * The children element.
    */
@@ -43,7 +40,6 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
       bgClassName,
       fgClassName,
       bgCircleProps,
-      fgCircleProps,
     } = this.props;
 
     return (
@@ -61,10 +57,9 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
             value={value}
             color={color}
             colors={colors}
-            {...fgCircleProps}
           />
         </ReactSvg>
-         {children}
+        {children}
       </div>
     );
   }
