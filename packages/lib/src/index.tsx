@@ -18,9 +18,17 @@ export type ReactRingProgressProps = {
    */
   bgCircleProps?: ReactCircleProps;
   /**
+   * The rest props of foreground circle.
+   */
+  fgCircleProps?: ReactCircleProps;
+  /**
    * The children element.
    */
   children?: ReactNode;
+  /**
+   * The background color of circle.
+   */
+  bgColor?: string;
 } & ReactCircleProps;
 
 export default class ReactRingProgress extends Component<ReactRingProgressProps> {
@@ -40,6 +48,8 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
       bgClassName,
       fgClassName,
       bgCircleProps,
+      fgCircleProps,
+      bgColor,
     } = this.props;
 
     return (
@@ -48,6 +58,7 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
           <ReactCircle
             thickness={thickness}
             className={bgClassName}
+            color={bgColor}
             {...bgCircleProps}
           />
           <ReactCircle
@@ -57,6 +68,7 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
             value={value}
             color={color}
             colors={colors}
+            {...fgCircleProps}
           />
         </ReactSvg>
         {children}

@@ -17,9 +17,10 @@ function App() {
         </ReactRingProgress>
 
         <ReactRingProgress
-          value={80}
+          value={60}
           thickness={6}
           lineCap="round"
+          bgColor="lightblue"
           colors={[
             { offset: 0, value: 'red' },
             { offset: 50, value: 'yellow' },
