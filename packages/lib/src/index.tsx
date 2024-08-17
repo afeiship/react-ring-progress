@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import React, { ReactNode, Component } from 'react';
-import ReactSvgCircle, { ReactSvgCircleProps } from '@jswork/react-svg-circle';
+import { ReactSvg, ReactCircle, ReactCircleProps } from '@jswork/react-svg-circle';
 
 const CLASS_NAME = 'react-ring-progress';
 export type ReactRingProgressProps = {
@@ -13,34 +13,18 @@ export type ReactRingProgressProps = {
    */
   fgClassName?: string;
   /**
+   * The rest props of background circle.
+   */
+  bgCircleProps?: ReactCircleProps;
+  /**
+   * The rest props of foreground circle.
+   */
+  fgCircleProps?: ReactCircleProps;
+  /**
    * The children element.
    */
   children?: ReactNode;
-  /**
-   * The value of progress.
-   */
-  value: number;
-  /**
-   * The color of progress.
-   */
-  stroke?: ReactSvgCircleProps['stroke'];
-  /**
-   * The line cap of progress.
-   */
-  lineCap?: ReactSvgCircleProps['lineCap'];
-  /**
-   * The line width of progress.
-   */
-  lineWidth?: ReactSvgCircleProps['lineWidth'];
-  /**
-   * The background svg circle props.
-   */
-  bgProps?: ReactSvgCircleProps;
-  /**
-   * The foreground svg circle props.
-   */
-  fgProps?: ReactSvgCircleProps;
-} & ReactSvgCircleProps;
+} & ReactCircleProps;
 
 export default class ReactRingProgress extends Component<ReactRingProgressProps> {
   static displayName = CLASS_NAME;
@@ -51,22 +35,36 @@ export default class ReactRingProgress extends Component<ReactRingProgressProps>
     const {
       className,
       children,
+      thickness,
       value,
-      stroke,
       lineCap,
-      lineWidth,
-      bgProps,
-      fgProps,
-      ...rest
+      color,
+      colors,
+      bgClassName,
+      fgClassName,
+      bgCircleProps,
+      fgCircleProps,
     } = this.props;
 
     return (
-      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)} {...rest}>
-        <ReactSvgCircle className={`${CLASS_NAME}__bg`} value={100} lineWidth={lineWidth}
-                        stroke="#ccc" {...bgProps} />
-        <ReactSvgCircle className={`${CLASS_NAME}__fg`} value={value} stroke={stroke} lineCap={lineCap}
-                        lineWidth={lineWidth} {...fgProps} />
-        {children}
+      <div data-component={CLASS_NAME} className={cx(CLASS_NAME, className)}>
+        <ReactSvg>
+          <ReactCircle
+            thickness={thickness}
+            className={bgClassName}
+            {...bgCircleProps}
+          />
+          <ReactCircle
+            thickness={thickness}
+            lineCap={lineCap}
+            className={fgClassName}
+            value={value}
+            color={color}
+            colors={colors}
+            {...fgCircleProps}
+          />
+        </ReactSvg>
+         {children}
       </div>
     );
   }

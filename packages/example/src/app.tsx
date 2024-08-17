@@ -7,12 +7,25 @@ function App() {
       <div className="badge badge-warning absolute right-0 top-0 m-4">
         Build Time: {BUILD_TIME}
       </div>
-      <div className="size-50 mx-auto">
+      <div className="mx-auto wp-3 max-w-100 x-5 debug-red bg-slate-200 rounded-md p-2 dark:text-white
+           dark:bg-slate-800">
+        <ReactRingProgress value={80} thickness={6} color="blue">
+          <div className="absolute text-center layout-trans-center-xy y">
+            <p>竞争力</p>
+            <h2 className="f-10">80%</h2>
+          </div>
+        </ReactRingProgress>
+
         <ReactRingProgress
-          lineCap="round"
-          stroke={{ start: '#007aff', end: '#ff5722' }}
           value={80}
-          lineWidth={10}>
+          thickness={6}
+          lineCap="round"
+          colors={[
+            { offset: 0, value: 'red' },
+            { offset: 50, value: 'yellow' },
+            { offset: 100, value: 'green' },
+          ]}
+        >
           <div className="absolute text-center layout-trans-center-xy y">
             <p>竞争力</p>
             <h2 className="f-10">80%</h2>
