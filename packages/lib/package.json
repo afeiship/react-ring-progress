@@ -1,6 +1,6 @@
 {
   "name": "@jswork/react-ring-progress",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/main.cjs.js",
   "module": "dist/main.esm.js",
   "types": "dist/main.d.ts",
