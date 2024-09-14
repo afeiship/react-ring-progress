@@ -7,7 +7,7 @@ function App() {
       <div className="badge badge-warning absolute right-0 top-0 m-4">
         Build Time: {BUILD_TIME}
       </div>
-      <div className="mx-auto wp-3 max-w-100 x-5 debug-red bg-slate-200 rounded-md p-2 dark:text-white
+      <div className="mx-auto wp-5 max-w-100 x-5 debug-red bg-slate-200 rounded-md p-2 dark:text-white
            dark:bg-slate-800">
         <ReactRingProgress value={80} thickness={6} color="blue">
           <div className="absolute text-center layout-trans-center-xy y">
@@ -21,6 +21,7 @@ function App() {
           thickness={6}
           lineCap="round"
           bgColor="lightblue"
+          bgCircleProps={{ fill: 'orange' }}
           colors={[
             { offset: 0, value: 'red' },
             { offset: 50, value: 'yellow' },

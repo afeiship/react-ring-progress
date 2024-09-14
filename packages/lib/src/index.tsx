@@ -16,11 +16,11 @@ export type ReactRingProgressProps = {
   /**
    * The rest props of background circle.
    */
-  bgCircleProps?: ReactCircleProps;
+  bgCircleProps?: Omit<ReactCircleProps, 'thickness' | 'value' | 'colors'>;
   /**
    * The rest props of foreground circle.
    */
-  fgCircleProps?: ReactCircleProps;
+  fgCircleProps?: Omit<ReactCircleProps, 'thickness' | 'value' | 'colors'>;
   /**
    * The children element.
    */
